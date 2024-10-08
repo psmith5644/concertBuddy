@@ -2,11 +2,11 @@
 #include "deviceState.h"
 
 void setup(void) {
-
+    DeviceState_Init();
 }
 
 void teardown(void) {
-
+    DeviceState_Destroy();
 }
 
 void testInitStateOff(void) {
