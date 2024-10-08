@@ -38,6 +38,8 @@
   :support:
     - test/support
   :libraries: []
+  :include:
+    - include/**
 
 :defines:
   # in order to add common defines:
