@@ -1,7 +1,8 @@
 #pragma once
 
 typedef enum {
-    DeviceState_Off
+    DeviceState_Off,
+    DeviceState_On
 } DeviceState;
 
 void DeviceState_Init(void);
