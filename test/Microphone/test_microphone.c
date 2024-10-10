@@ -1,4 +1,5 @@
 #include "unity.h"
+#include "fakeMic.h"
 
 static micSample * sampleData;
 
