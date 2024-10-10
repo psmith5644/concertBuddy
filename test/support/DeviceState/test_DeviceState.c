@@ -1,5 +1,6 @@
 #include "unity.h"
 #include "deviceState.h"
+#include "fakePwrSwitch.h"
 
 void setup(void) {
     DeviceState_Init();
