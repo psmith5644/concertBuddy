@@ -4,10 +4,12 @@
 
 void setup(void) {
     DeviceState_Init();
+    PwrSwitch_Init();
 }
 
 void teardown(void) {
     DeviceState_Destroy();
+    PwrSwitch_Destroy();
 }
 
 void testInitStateOff(void) {
@@ -15,19 +17,13 @@ void testInitStateOff(void) {
 }
 
 void testStateOffWhenSwitchOpen(void) {
-    PwrSwitch_Init();
     FakePwrSwitch_Open();
 
     TEST_ASSERT_EQUAL_UINT8(DeviceState_Off, DeviceState_GetState());
-
-    PwrSwitch_Destroy();
 }
 
 void testStateOnWhenSwitchClosed(void) {
-    PwrSwitch_Init();
     FakePwrSwitch_Close();
 
     TEST_ASSERT_EQUAL_UINT8(DeviceState_On, DeviceState_GetState());
-
-    PwrSwitch_Destroy();
 }
