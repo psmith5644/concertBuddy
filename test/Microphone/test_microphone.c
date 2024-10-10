@@ -20,3 +20,12 @@ void testSampleOutput(void) {
 
     Mic_Destroy();
 }
+
+void testTwoSamples(void) {
+    Mic_Init();
+
+    TEST_ASSERT_EQUAL_UINT32(1, FakeMic_Sample(1));
+    TEST_ASSERT_EQUAL_UINT32(12, FakeMic_Sample(12));
+
+    Mic_Destory();
+}
