@@ -5,4 +5,4 @@
 typedef uint32_t micSample;
 
 void Mic_Init(void);
-void Mic_Destory(void);
+void Mic_Destroy(void);
