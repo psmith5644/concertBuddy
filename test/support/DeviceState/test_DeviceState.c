@@ -22,3 +22,12 @@ void testStateOffWhenSwitchOpen(void) {
 
     PwrSwitch_Destroy();
 }
+
+void testStateOnWhenSwitchClosed(void) {
+    PwrSwitch_Init();
+    FakePwrSwitch_Close();
+
+    TEST_ASSERT_EQUAL_UINT8(DeviceState_On, DeviceState_GetState());
+
+    PwrSwitch_Destroy();
+}
