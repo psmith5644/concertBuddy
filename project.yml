@@ -77,6 +77,9 @@
     :html_medium_threshold: 75
     :html_high_threshold: 90
 
+:test_runner:
+  :cmdline_args: "-v"  # You can add any command-line arguments here
+
 #:tools:
 # Ceedling defaults to using gcc for compiling, linking, etc.
 # As [:tools] is blank, gcc will be used (so long as it's in your system path)
