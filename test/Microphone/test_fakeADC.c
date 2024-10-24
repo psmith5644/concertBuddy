@@ -3,7 +3,6 @@
 
 /* 
 Test List:
-- the getnextsample() function returns whatever was the previous value in setnextsample()
 - there is an initialize oneshot function that sets the status flag to ready for oneshot samples
 - an initialize continuous function sets the status flag to ready for continuous samples
 - continuousSamplingBegin() will begin continuous sampling, sending the data to a buffer via DMA

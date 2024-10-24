@@ -10,7 +10,7 @@ void FakeADC_Init(void) {}
 void FakeADC_Destroy(void) {}
 
 sample_t FakeADC_GetNextSample(void) {
-    return 0;
+    return nextFakeSample;
 }
 
 void FakeADC_SetNextSample(sample_t sample) {
