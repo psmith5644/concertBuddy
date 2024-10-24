@@ -1,11 +1,6 @@
 #include "unity.h"
 #include "fakeADC.h"
 
-/* 
-Test List:
-- continuousSamplingStop() will stop the continuous sampling.
-*/
-
 void setup(void) {
     ADC_Init();
 }
