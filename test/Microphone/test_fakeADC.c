@@ -25,3 +25,11 @@ void testGetSampleMatchesPreviouslySetSample(void) {
     FakeADC_SetNextSample(1234);
     TEST_ASSERT_EQUAL_UINT32(1234, FakeADC_GetNextSample());
 }
+
+void testTwoSamplesMatch(void) {
+    FakeADC_SetNextSample(1234);
+    TEST_ASSERT_EQUAL_UINT32(1234, FakeADC_GetNextSample());
+    
+    FakeADC_SetNextSample(5678);
+    TEST_ASSERT_EQUAL_UINT32(5678, FakeADC_GetNextSample());
+}
