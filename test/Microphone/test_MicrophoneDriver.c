@@ -24,7 +24,7 @@ void testSingleSample(void) {
     MicrophoneDriver_Init(microphonePort);
 
     FakeADC_SetNextSample(1234);
-    uint32_t sample = MicrophoneDriver_Sample(microphonePort);
+    micSample_t sample = MicrophoneDriver_Sample(microphonePort);
     TEST_ASSERT_EQUAL_UINT32(1234, sample);
 
     MicrophoneDriver_Destroy(microphonePort);
