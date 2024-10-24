@@ -3,7 +3,6 @@
 
 /* 
 Test List:
-- an initialize continuous function sets the status flag to ready for continuous samples
 - continuousSamplingBegin() will begin continuous sampling, sending the data to a buffer via DMA
 - continuousSamplingStop() will stop the continuous sampling.
 */
@@ -40,4 +39,9 @@ void testOneshotInitFlag(void) {
 void testInitContinuousStatus(void) {
     ADC_InitContinuousSampling();
     TEST_ASSERT_EQUAL(ADC_STATUS_CONTINUOUS_RDY, ADC_GetStatus());
+}
+
+void testContinuousSamplingBeginFlag(void) {
+    ADC_ContinuousSamplingBegin();
+    TEST_ASSERT_EQUAL(ADC_STATUS_CONTINUOUS_SAMPLING, ADC_GetStatus());
 }
