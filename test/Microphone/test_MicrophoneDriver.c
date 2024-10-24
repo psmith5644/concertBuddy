@@ -4,6 +4,14 @@
 
 uint8_t static const microphonePort = 33;
 
+/* 
+Test List:
+- continuous sampling results in a destination buffer full of samples
+- stopping the continuous sampling results in the buffer being unmodified
+- can start, stop, and start continuous sampling and buffer remains consistent.
+- driver can only be initialized on GPIOs with an ADC
+*/
+
 void setup(void) {
     MicrophoneDriver_Init(microphonePort);
 }
@@ -30,4 +38,12 @@ void testTwoSamples(void) {
     TEST_ASSERT_EQUAL_UINT32(5678, MicrophoneDriver_Sample(microphonePort));
 }
 
-// test that it only can be initialized on GPIOs with an ADC
+void testContinuousSamplingBufferResult(void) {
+    micSample_t buf[] = {0x12, 0x34, 0x56, 0x78};
+    FakeADC_SetBuffer(buf);
+
+    micSample_t * dest;
+    MicrophoneDriver_ContinuousSamplingBegin(dest);
+    MicrophoneDriver_ContinuousSamplingStop();
+    TEST_ASSERT_EQUAL_UINT32_ARRAY(buf, dest, 4);
+}
