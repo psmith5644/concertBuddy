@@ -1,5 +1,6 @@
 #include "unity.h"
 #include "microphoneDriver.h"
+#include "fakeADC.h"
 
 void setup(void) {
 
