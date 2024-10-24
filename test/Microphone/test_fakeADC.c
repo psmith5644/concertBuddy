@@ -10,26 +10,18 @@ Test List:
 */
 
 void setup(void) {
-
+    FakeADC_Init();
 }
 
 void teardown(void) {
-
+    FakeADC_Destroy();
 }
 
 void testNoSampleResultZero(void) {
-    FakeADC_Init();
-
     TEST_ASSERT_EQUAL_UINT32(0, FakeADC_GetNextSample());
-
-    FakeADC_Destroy();
 }
 
 void testGetSampleMatchesPreviouslySetSample(void) {
-    FakeADC_Init();
-
     FakeADC_SetNextSample(1234);
     TEST_ASSERT_EQUAL_UINT32(1234, FakeADC_GetNextSample());
-
-    FakeADC_Destroy();
 }
