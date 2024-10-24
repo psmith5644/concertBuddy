@@ -6,3 +6,7 @@ void MicrophoneDriver_Destroy(uint8_t port) {}
 MIC_STATUS MicrophoneDriver_GetStatus(uint8_t port) {
     return MIC_STATUS_RDY;
 }
+
+micSample_t MicrophoneDriver_Sample(uint8_t port) {
+    return 1234;
+}
