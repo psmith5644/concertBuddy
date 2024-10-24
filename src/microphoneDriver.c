@@ -8,5 +8,5 @@ MIC_STATUS MicrophoneDriver_GetStatus(uint8_t port) {
 }
 
 micSample_t MicrophoneDriver_Sample(uint8_t port) {
-    return 1234;
+    return ADC_Sample();
 }

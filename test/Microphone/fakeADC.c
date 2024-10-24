@@ -1,5 +1,11 @@
 #include "fakeADC.h"
 
-void FakeADC_SetNextSample(uint32_t sample) {
-    
+sample_t static nextFakeSample;
+
+sample_t ADC_Sample(void) {
+    return nextFakeSample;
+}
+
+void FakeADC_SetNextSample(sample_t sample) {
+    nextFakeSample = sample;
 }
