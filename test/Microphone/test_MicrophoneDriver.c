@@ -23,5 +23,11 @@ void testSingleSample(void) {
     TEST_ASSERT_EQUAL_UINT32(1234, sample);
 }
 
+void testTwoSamples(void) {
+    FakeADC_SetNextSample(1234);
+    TEST_ASSERT_EQUAL_UINT32(1234, MicrophoneDriver_Sample(microphonePort));
+    FakeADC_SetNextSample(5678);
+    TEST_ASSERT_EQUAL_UINT32(5678, MicrophoneDriver_Sample(microphonePort));
+}
 
 // test that it only can be initialized on GPIOs with an ADC
