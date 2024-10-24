@@ -6,6 +6,13 @@ sample_t ADC_Sample(void) {
     return nextFakeSample;
 }
 
+void FakeADC_Init(void) {}
+void FakeADC_Destroy(void) {}
+
+sample_t FakeADC_GetNextSample(void) {
+    return 0;
+}
+
 void FakeADC_SetNextSample(sample_t sample) {
     nextFakeSample = sample;
 }
