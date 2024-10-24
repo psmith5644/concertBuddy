@@ -10,30 +10,30 @@ Test List:
 */
 
 void setup(void) {
-    FakeADC_Init();
+    ADC_Init();
 }
 
 void teardown(void) {
-    FakeADC_Destroy();
+    ADC_Destroy();
 }
 
 void testNoSampleResultZero(void) {
-    TEST_ASSERT_EQUAL_UINT32(0, FakeADC_GetNextSample());
+    TEST_ASSERT_EQUAL_UINT32(0, ADC_Sample());
 }
 
 void testGetSampleMatchesPreviouslySetSample(void) {
     FakeADC_SetNextSample(1234);
-    TEST_ASSERT_EQUAL_UINT32(1234, FakeADC_GetNextSample());
+    TEST_ASSERT_EQUAL_UINT32(1234, ADC_Sample());
 }
 
 void testTwoSamplesMatch(void) {
     FakeADC_SetNextSample(1234);
-    TEST_ASSERT_EQUAL_UINT32(1234, FakeADC_GetNextSample());
+    TEST_ASSERT_EQUAL_UINT32(1234, ADC_Sample());
     
     FakeADC_SetNextSample(5678);
-    TEST_ASSERT_EQUAL_UINT32(5678, FakeADC_GetNextSample());
+    TEST_ASSERT_EQUAL_UINT32(5678, ADC_Sample());
 }
 
 void testOneshotInitFlag(void) {
-    TEST_ASSERT_EQUAL(ADC_STATUS_ONESHOT_RDY, FakeADC_GetStatus());
+    TEST_ASSERT_EQUAL(ADC_STATUS_ONESHOT_RDY, ADC_GetStatus());
 }
