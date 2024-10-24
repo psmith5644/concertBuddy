@@ -16,3 +16,4 @@ sample_t ADC_Sample(void);
 ADC_STATUS ADC_GetStatus(void);
 void ADC_InitContinuousSampling(void);
 void ADC_ContinuousSamplingBegin(void);
+void ADC_ContinuousSamplingStop(void);

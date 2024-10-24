@@ -29,3 +29,7 @@ void ADC_InitContinuousSampling(void) {
 void ADC_ContinuousSamplingBegin(void) {
     status = ADC_STATUS_CONTINUOUS_SAMPLING;
 }
+
+void ADC_ContinuousSamplingStop(void) {
+    status = ADC_STATUS_CONTINUOUS_RDY;
+}
