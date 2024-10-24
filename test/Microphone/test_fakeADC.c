@@ -1,4 +1,5 @@
 #include "unity.h"
+#include "fakeADC.h"
 
 /* 
 Test List:
