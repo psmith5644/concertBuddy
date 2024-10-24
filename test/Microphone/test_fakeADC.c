@@ -3,7 +3,6 @@
 
 /* 
 Test List:
-- continuousSamplingBegin() will begin continuous sampling, sending the data to a buffer via DMA
 - continuousSamplingStop() will stop the continuous sampling.
 */
 
@@ -44,4 +43,9 @@ void testInitContinuousStatus(void) {
 void testContinuousSamplingBeginFlag(void) {
     ADC_ContinuousSamplingBegin();
     TEST_ASSERT_EQUAL(ADC_STATUS_CONTINUOUS_SAMPLING, ADC_GetStatus());
+}
+
+void testContinuousSamplingStopFlag(void) {
+    ADC_ContinuousSamplingStop();
+    TEST_ASSERT_EQUAL(ADC_STATUS_CONTINUOUS_SAMPLING_RDY, ADC_GetStatus());
 }
