@@ -33,3 +33,7 @@ void testTwoSamplesMatch(void) {
     FakeADC_SetNextSample(5678);
     TEST_ASSERT_EQUAL_UINT32(5678, FakeADC_GetNextSample());
 }
+
+void testOneshotInitFlag(void) {
+    TEST_ASSERT_EQUAL(ADC_STATUS_ONESHOT_RDY, FakeADC_GetStatus());
+}
