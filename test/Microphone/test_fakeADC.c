@@ -57,3 +57,22 @@ void testFakeBufferElementsMatch(void) {
 
     TEST_ASSERT_EQUAL_UINT32_ARRAY(expected, dest, 4);
 }
+
+void testMultipleContinuousSamplingResults(void) {
+    sample_t buf[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xab};
+    FakeADC_SetBuffer(buf, 6);
+    sample_t dest[AUDIO_SAMPLE_BUFFER_SIZE];
+    sample_t expected[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xab};
+    ADC_ContinuousSamplingBegin(dest, AUDIO_SAMPLE_BUFFER_SIZE);
+    ADC_ContinuousSamplingStop();
+
+    TEST_ASSERT_EQUAL_UINT32_ARRAY(expected, dest, 6);
+
+    sample_t buf2[] = {0xcd, 0xde, 0xff};
+    sample_t expected2[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xde, 0xff};
+    FakeADC_SetBuffer(buf2, 3);
+    ADC_ContinuousSamplingBegin(dest, AUDIO_SAMPLE_BUFFER_SIZE);
+    ADC_ContinuousSamplingStop();
+
+    TEST_ASSERT_EQUAL_UINT32_ARRAY(expected, expected2, 9);
+}
