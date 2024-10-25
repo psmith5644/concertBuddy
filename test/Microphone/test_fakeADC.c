@@ -44,3 +44,16 @@ void testContinuousSamplingStopFlag(void) {
     ADC_ContinuousSamplingStop();
     TEST_ASSERT_EQUAL(ADC_STATUS_CONTINUOUS_RDY, ADC_GetStatus());
 }
+
+void testFakeBufferElementsMatch(void) {
+    sample_t buf[4] = {0x12, 0x34, 0x56, 0x78};
+    FakeADC_SetBuffer(buf);
+
+    sample_t dest[] = {0x0, 0x0, 0x0, 0x0};
+    sample_t expected[] = {0x12, 0x34, 0x56, 0x78};
+
+    ADC_ContinuousSamplingBegin(dest);
+    ADC_ContinuousSamplingStop();
+
+    TEST_ASSERT_EQUAL_UINT32_ARRAY(expected, dest, 4);
+}
