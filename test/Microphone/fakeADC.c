@@ -12,6 +12,7 @@ sample_t ADC_Sample(void) {
 
 void ADC_Init(void) {
     status = ADC_STATUS_ONESHOT_RDY;
+    numSamplesInDest = 0;
 }
 
 void ADC_Destroy(void) {
