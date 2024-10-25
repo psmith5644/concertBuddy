@@ -42,7 +42,7 @@ void testContinuousSamplingBufferResult(void) {
     micSample_t buf[] = {0x12, 0x34, 0x56, 0x78};
     FakeADC_SetBuffer(buf);
 
-    micSample_t * dest;
+    micSample_t dest[] = {0x00, 0x00, 0x00, 0x00};
     MicrophoneDriver_ContinuousSamplingBegin(dest);
     MicrophoneDriver_ContinuousSamplingStop();
     TEST_ASSERT_EQUAL_UINT32_ARRAY(buf, dest, 4);
