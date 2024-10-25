@@ -36,7 +36,7 @@ void testInitContinuousStatus(void) {
 }
 
 void testContinuousSamplingBeginFlag(void) {
-    ADC_ContinuousSamplingBegin(NULL);
+    ADC_ContinuousSamplingBegin(NULL, 0);
     TEST_ASSERT_EQUAL(ADC_STATUS_CONTINUOUS_SAMPLING, ADC_GetStatus());
 }
 

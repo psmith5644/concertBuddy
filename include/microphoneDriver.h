@@ -13,5 +13,5 @@ void MicrophoneDriver_Init(uint8_t port);
 void MicrophoneDriver_Destroy(uint8_t port);
 MIC_STATUS MicrophoneDriver_GetStatus(uint8_t port);
 micSample_t MicrophoneDriver_Sample(uint8_t port);
-void MicrophoneDriver_ContinuousSamplingBegin(micSample_t * dest);
+void MicrophoneDriver_ContinuousSamplingBegin(micSample_t * dest, size_t size);
 void MicrophoneDriver_ContinuousSamplingStop();

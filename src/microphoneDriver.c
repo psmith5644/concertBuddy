@@ -11,8 +11,8 @@ micSample_t MicrophoneDriver_Sample(uint8_t port) {
     return ADC_Sample();
 }
 
-void MicrophoneDriver_ContinuousSamplingBegin(micSample_t * dest) {
-    ADC_ContinuousSamplingBegin(dest);
+void MicrophoneDriver_ContinuousSamplingBegin(micSample_t * dest, size_t size) {
+    ADC_ContinuousSamplingBegin(dest, size);
 }
 
 void MicrophoneDriver_ContinuousSamplingStop() {}
