@@ -10,6 +10,8 @@ typedef enum {
     ADC_STATUS_CONTINUOUS_SAMPLING
 } ADC_STATUS;
 
+#define AUDIO_SAMPLE_BUFFER_SIZE 128
+
 void ADC_Init(void);
 void ADC_Destroy(void);
 sample_t ADC_Sample(void);
