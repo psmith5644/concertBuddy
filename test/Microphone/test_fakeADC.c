@@ -74,5 +74,5 @@ void testMultipleContinuousSamplingResults(void) {
     ADC_ContinuousSamplingBegin(dest, AUDIO_SAMPLE_BUFFER_SIZE);
     ADC_ContinuousSamplingStop();
 
-    TEST_ASSERT_EQUAL_UINT32_ARRAY(expected, expected2, 9);
+    TEST_ASSERT_EQUAL_UINT32_ARRAY(expected2, dest, 9);
 }
