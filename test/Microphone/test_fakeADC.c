@@ -58,6 +58,28 @@ void testFakeBufferElementsMatch(void) {
     TEST_ASSERT_EQUAL_UINT32_ARRAY(expected, dest, 4);
 }
 
+void testGetFakeBuffer(void) {
+    sample_t buf[] = {0xab, 0xcd, 0xef};
+    sample_t expected[] = {0xab, 0xcd, 0xef};
+    FakeADC_SetBuffer(buf, 3);
+
+    TEST_ASSERT_EQUAL_UINT32_ARRAY(expected, FakeADC_GetBuffer(), 3);
+}
+
+void testGetFakeBufferTwice(void) {
+    sample_t buf[] = {0xab, 0xcd, 0xef};
+    sample_t expected[] = {0xab, 0xcd, 0xef};
+    FakeADC_SetBuffer(buf, 3);
+
+    TEST_ASSERT_EQUAL_UINT32_ARRAY(expected, FakeADC_GetBuffer(), 3);
+
+    sample_t buf2[] = {0x12, 0x34, 0x56, 0x78};
+    sample_t expected2[] = {0x12, 0x34, 0x56, 0x78};
+    FakeADC_SetBuffer(buf2, 4);
+
+    TEST_ASSERT_EQUAL_UINT32_ARRAY(expected2, FakeADC_GetBuffer(), 4);
+}
+
 void testMultipleContinuousSamplingResults(void) {
     sample_t buf[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xab};
     FakeADC_SetBuffer(buf, 6);
