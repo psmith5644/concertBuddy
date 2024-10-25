@@ -9,14 +9,16 @@ Test List:
 - continuous sampling results in a destination buffer full of samples
 - stopping the continuous sampling results in the buffer being unmodified
 - can start, stop, and start continuous sampling and buffer remains consistent.
+- can clear the buffer
+- can start continuous sampling without a value to continuously sample
 - driver can only be initialized on GPIOs with an ADC
 */
 
-void setup(void) {
+void setUp(void) {
     MicrophoneDriver_Init(microphonePort);
 }
 
-void teardown(void) {
+void tearDown(void) {
     MicrophoneDriver_Destroy(microphonePort);
 }
 
@@ -46,4 +48,21 @@ void testContinuousSamplingBufferResult(void) {
     MicrophoneDriver_ContinuousSamplingBegin(dest, 4);
     MicrophoneDriver_ContinuousSamplingStop();
     TEST_ASSERT_EQUAL_UINT32_ARRAY(buf, dest, 4);
+}
+
+void testMultipleContinuousSamplingBufferResults(void) {
+    micSample_t buf[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xab};
+    FakeADC_SetBuffer(buf, 6);
+
+    micSample_t dest[AUDIO_SAMPLE_BUFFER_SIZE];
+    MicrophoneDriver_ContinuousSamplingBegin(dest, 6);
+    MicrophoneDriver_ContinuousSamplingStop();
+
+    micSample_t buf2[] = {0xff, 0xee, 0xdd, 0xcc, 0xbb, 0xaa, 0x00, 0x11, 0x22};
+    FakeADC_SetBuffer(buf2, 9);
+    MicrophoneDriver_ContinuousSamplingBegin(dest, 9);
+    MicrophoneDriver_ContinuousSamplingStop();
+    
+    micSample_t expected[] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xff, 0xee, 0xdd, 0xcc, 0xbb, 0xaa, 0x00, 0x11, 0x22};
+    TEST_ASSERT_EQUAL_UINT32_ARRAY(expected, dest, 15);
 }
