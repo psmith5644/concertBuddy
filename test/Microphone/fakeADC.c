@@ -51,3 +51,7 @@ void ADC_ContinuousSamplingStop(void) {
 void FakeADC_SetBuffer(sample_t * buf, size_t size) {
     memcpy(fakeContinuousSamples, buf, size * sizeof(sample_t));
 }
+
+sample_t * FakeADC_GetBuffer() {
+    return fakeContinuousSamples;
+}

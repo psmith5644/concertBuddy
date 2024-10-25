@@ -4,3 +4,4 @@
 
 void FakeADC_SetNextSample(sample_t sample);
 void FakeADC_SetBuffer(sample_t * buf, size_t size);
+sample_t * FakeADC_GetBuffer(void);
