@@ -1,11 +1,11 @@
 #include "unity.h"
 #include "fakeADC.h"
 
-void setup(void) {
+void setUp(void) {
     ADC_Init();
 }
 
-void teardown(void) {
+void tearDown(void) {
     ADC_Destroy();
 }
 
